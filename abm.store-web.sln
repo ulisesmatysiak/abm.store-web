@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "presentacion", "presentacion\presentacion.csproj", "{90A61811-63B9-402F-AA49-6058BB0E9C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "..\..\C# lvl 2\TPFinalNivel2_Matysiak\dominio\dominio.csproj", "{30ECD1E6-6047-4224-9894-7F99D8A9E185}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{ADF1CCE6-E57C-4EF6-A28C-7CE4860C3249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "..\..\C# lvl 2\TPFinalNivel2_Matysiak\negocio\negocio.csproj", "{ADF1CCE6-E57C-4EF6-A28C-7CE4860C3249}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{30ECD1E6-6047-4224-9894-7F99D8A9E185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{90A61811-63B9-402F-AA49-6058BB0E9C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A61811-63B9-402F-AA49-6058BB0E9C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90A61811-63B9-402F-AA49-6058BB0E9C9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADF1CCE6-E57C-4EF6-A28C-7CE4860C3249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ADF1CCE6-E57C-4EF6-A28C-7CE4860C3249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADF1CCE6-E57C-4EF6-A28C-7CE4860C3249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADF1CCE6-E57C-4EF6-A28C-7CE4860C3249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30ECD1E6-6047-4224-9894-7F99D8A9E185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
