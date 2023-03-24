@@ -3,15 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h6>pantalla de login </h6>
-    <div class="mb-3">
-        <label class="form-label">Email: </label>
-        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" Required="" />
+    <div class="col-4">
+        <div class="mb-3">
+            <label class="form-label">Email: </label>
+            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" Required="" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password: </label>
+            <asp:TextBox runat="server" ID="txtPass" CssClass="form-control" TextMode="Password" Required="" />
+        </div>
+        <asp:Button Text="Acceder" runat="server" ID="btnLogin" CssClass="btn btn-primary" />
+        <a href="/">Cancelar </a>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Password: </label>
-        <asp:TextBox runat="server" ID="txtPass" CssClass="form-control" TextMode="Password" Required="" />
-    </div>
-    <asp:Button Text="Acceder" runat="server" ID="btnLogin" CssClass="btn btn-primary" />
-    <a href="/">Cancelar </a>
 </asp:Content>

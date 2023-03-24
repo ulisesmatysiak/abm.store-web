@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="AltaBajaModificar.aspx.cs" Inherits="presentacion.FormularioABM" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="AltaBajaModificar.aspx.cs" Inherits="presentacion.AltaBajaModificar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -26,13 +26,6 @@
                 <label for="txtDescripcion" class="form-label">Descripción: </label>
                 <asp:TextBox runat="server" ID="txtDescripcion" CssClass="form-control" />
             </div>
-            <div>
-                <asp:Button Text="ACEPTAR" runat="server" ID="btnAceptar" CssClass="btn btn-primary" />
-                <a href="Detalle.Aspx"> CANCELAR </a>
-            </div>
-        </div>
-
-        <div class="col-6">
             <div class="mb-3">
                 <label for="ddlMarca" class="form-label">Marca: </label>
                 <asp:DropDownList runat="server" ID="ddlMarca" CssClass="form-control"></asp:DropDownList>
@@ -41,6 +34,13 @@
                 <label for="ddlCategoria" class="form-label">Categoría: </label>
                 <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control"></asp:DropDownList>
             </div>
+            <div>
+                <asp:Button Text="Aceptar" runat="server" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
+                <a href="Detalle.Aspx"> Cancelar </a>
+            </div>
+        </div>
+
+        <div class="col-6">           
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio: </label>
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
@@ -49,10 +49,10 @@
                 <ContentTemplate>
                     <div class="mb-3">
                         <label for="txtImagenUrl" class="form-label">Imagen URL: </label>
-                        <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control"/>
+                        <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtImagenUrl_TextChanged"/>
                     </div>
                     <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
-                        runat="server" ID="imgPokemon" Width="60%" />
+                        runat="server" ID="imgArticulo" Width="60%" />
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

@@ -11,7 +11,7 @@ namespace presentacion
 {
 
 
-    public partial class FormularioABM
+    public partial class AltaBajaModificar
     {
 
         /// <summary>
@@ -60,15 +60,6 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
-        /// Control btnAceptar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAceptar;
-
-        /// <summary>
         /// Control ddlMarca.
         /// </summary>
         /// <remarks>
@@ -85,6 +76,15 @@ namespace presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
+
+        /// <summary>
+        /// Control btnAceptar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAceptar;
 
         /// <summary>
         /// Control txtPrecio.
@@ -105,12 +105,12 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtImagenUrl;
 
         /// <summary>
-        /// Control imgPokemon.
+        /// Control imgArticulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPokemon;
+        protected global::System.Web.UI.WebControls.Image imgArticulo;
     }
 }
