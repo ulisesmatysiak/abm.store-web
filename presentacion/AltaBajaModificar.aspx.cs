@@ -17,6 +17,7 @@ namespace presentacion
 
             try
             {
+                // config incial
                 if (!IsPostBack)
                 {
                     ArticuloNegocio negocio = new ArticuloNegocio();
@@ -32,6 +33,12 @@ namespace presentacion
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataBind();
                 }
+
+                //config modificar
+                //if (Request.QueryString["id"] != null)
+                //{
+
+                //}
             }
             catch (Exception ex)
             {
@@ -60,7 +67,7 @@ namespace presentacion
                 nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
-                
+
                 nuevo.Precio = int.Parse(txtPrecio.Text);
                 nuevo.ImagenUrl = txtImagenUrl.Text;
 
