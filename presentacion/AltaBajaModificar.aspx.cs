@@ -20,25 +20,41 @@ namespace presentacion
                 // config incial
                 if (!IsPostBack)
                 {
-                    ArticuloNegocio negocio = new ArticuloNegocio();
-                    List<Articulo> lista = negocio.listarConSp();
+                    MarcaNegocio marcaNegocio = new MarcaNegocio();
+                    List<Marca> listaMarca = marcaNegocio.listar();
 
-                    ddlMarca.DataSource = lista;
+                    CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                    List<Categoria> listaCategoria = categoriaNegocio.listar();
+
+                    ddlMarca.DataSource = listaMarca;
                     ddlMarca.DataValueField = "Id";
                     ddlMarca.DataTextField = "Descripcion";
                     ddlMarca.DataBind();
 
-                    ddlCategoria.DataSource = lista;
+                    ddlCategoria.DataSource = listaCategoria;
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataBind();
                 }
 
                 //config modificar
-                //if (Request.QueryString["id"] != null)
-                //{
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (id != "")
+                {
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    Articulo seleccionado = (negocio.listar(id))[0];
+                    Session.Add("artSeleccionado", seleccionado);
 
-                //}
+                    txtId.Text = id;
+                    txtCodigo.Text = seleccionado.Codigo;
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
+                    ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+                    txtPrecio.Text = seleccionado.Precio.ToString();
+                    txtImagenUrl.Text = seleccionado.ImagenUrl;
+                    txtImagenUrl_TextChanged(sender, e);
+                }
             }
             catch (Exception ex)
             {
@@ -71,6 +87,15 @@ namespace presentacion
                 nuevo.Precio = int.Parse(txtPrecio.Text);
                 nuevo.ImagenUrl = txtImagenUrl.Text;
 
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificarConSP(nuevo);
+                }
+                else
+                    agregarConSP(nuevo);
+
+                Response.Redirect("Detalle.aspx", false);
             }
             catch (Exception ex)
             {
