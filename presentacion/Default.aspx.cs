@@ -14,7 +14,7 @@ namespace presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            repetidor.DataSource = negocio.listarConSp();
+            repetidor.DataSource = negocio.listarConSP();
             repetidor.DataBind();
         }
     }

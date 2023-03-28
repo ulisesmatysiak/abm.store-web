@@ -1,11 +1,11 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using negocio;
-
 
 namespace presentacion
 {
@@ -13,15 +13,13 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Articulo articulo = new Articulo();
+            List<Articulo> lista = new List<Articulo>();
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvArticulos.DataSource = negocio.listarConSp();
-            dgvArticulos.DataBind();
-        }
 
-        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string id = dgvArticulos.SelectedDataKey.Value.ToString();
-            Response.Redirect("AltaBajaModificar.aspx?id=" + id);
+            negocio.listarConSP();
+            articulo = lista[0];
         }
     }
 }
+

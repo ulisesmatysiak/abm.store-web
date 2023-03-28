@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using negocio;
 using dominio;
+using System.Security.Authentication.ExtendedProtection;
 
 namespace presentacion
 {
@@ -42,7 +43,7 @@ namespace presentacion
                 if (id != "")
                 {
                     ArticuloNegocio negocio = new ArticuloNegocio();
-                    Articulo seleccionado = (negocio.listar(id))[0];
+                    Articulo seleccionado = negocio.buscarPorID(id);
                     Session.Add("artSeleccionado", seleccionado);
 
                     txtId.Text = id;
@@ -58,8 +59,9 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex);
-                Response.Redirect("Error.aspx");
+                //Session.Add("Error", ex);
+                //Response.Redirect("Error.aspx");
+                throw ex;
             }
         }
 
@@ -93,9 +95,34 @@ namespace presentacion
                     negocio.modificarConSP(nuevo);
                 }
                 else
-                    agregarConSP(nuevo);
+                    negocio.agregarConSP(nuevo);
 
-                Response.Redirect("Detalle.aspx", false);
+                Response.Redirect("Listado.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
+                Response.Redirect("Error.aspx");
+            }
+        }
+
+        public bool ConfirmarEliminacion { get; set; }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmarEliminacion = true;
+        }
+
+        protected void btnConfirmarEliminacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkConfirmarEliminacion.Checked)
+                {
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    negocio.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("Listado.aspx");
+                }
             }
             catch (Exception ex)
             {
