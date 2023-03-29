@@ -15,7 +15,7 @@ namespace presentacion
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             repetidor.DataSource = negocio.listarConSP();
-            repetidor.DataBind();
+            repetidor.DataBind();          
         }
     }
 }

@@ -20,8 +20,8 @@ namespace presentacion
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string id = dgvArticulos.SelectedDataKey.Value.ToString();
-            Response.Redirect("AltaBajaModificar.aspx?id=" + id);
+            string Id = dgvArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("AltaBajaModificar.aspx?id=" + Id);
         }
     }
 }
