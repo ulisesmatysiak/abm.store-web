@@ -60,7 +60,7 @@ namespace presentacion
             catch (Exception ex)
             {
                 Session.Add("Error", ex);
-                Response.Redirect("Error.aspx");             
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -95,7 +95,7 @@ namespace presentacion
                 }
                 else
                     negocio.agregarConSP(nuevo);
-
+                    
                 Response.Redirect("Listado.aspx", false);
             }
             catch (Exception ex)
