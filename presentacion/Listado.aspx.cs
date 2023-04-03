@@ -14,7 +14,7 @@ namespace presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvArticulos.DataSource = negocio.listarConSP();
+            dgvArticulos.DataSource = negocio.listar();
             dgvArticulos.DataBind();
         }
 

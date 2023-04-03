@@ -18,7 +18,7 @@ namespace presentacion
             if (!IsPostBack)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                Session.Add("listaArticulos", negocio.listarConSP());
+                Session.Add("listaArticulos", negocio.listar());
                 repetidor.DataSource = Session["listaArticulos"];
                 repetidor.DataBind();
             }

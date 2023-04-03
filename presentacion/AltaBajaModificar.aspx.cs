@@ -91,10 +91,10 @@ namespace presentacion
                 if (Request.QueryString["id"] != null)
                 {
                     nuevo.Id = int.Parse(txtId.Text);
-                    negocio.modificarConSP(nuevo);
+                    negocio.modificar(nuevo);
                 }
                 else
-                    negocio.agregarConSP(nuevo);
+                    negocio.agregar(nuevo);
                     
                 Response.Redirect("Listado.aspx", false);
             }
