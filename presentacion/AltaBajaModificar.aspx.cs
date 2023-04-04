@@ -7,13 +7,15 @@ using System.Web.UI.WebControls;
 using negocio;
 using dominio;
 using System.Security.Authentication.ExtendedProtection;
+using System.Security.Cryptography.X509Certificates;
 
 namespace presentacion
 {
     public partial class AltaBajaModificar : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {      
             txtId.Enabled = false;
 
             try
@@ -40,7 +42,7 @@ namespace presentacion
 
                 //config modificar
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-                if (id != "")
+                if (id != "" && !IsPostBack)
                 {
                     ArticuloNegocio negocio = new ArticuloNegocio();
                     Articulo seleccionado = negocio.buscarPorID(id);
@@ -85,17 +87,17 @@ namespace presentacion
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
 
-                nuevo.Precio = int.Parse(txtPrecio.Text);
+                nuevo.Precio = decimal.Parse(txtPrecio.Text);
                 nuevo.ImagenUrl = txtImagenUrl.Text;
 
-                if (Request.QueryString["id"] != null)
+                if (txtId != null)
                 {
                     nuevo.Id = int.Parse(txtId.Text);
                     negocio.modificar(nuevo);
                 }
                 else
                     negocio.agregar(nuevo);
-                    
+
                 Response.Redirect("Listado.aspx", false);
             }
             catch (Exception ex)
@@ -124,8 +126,10 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex);
-                Response.Redirect("Error.aspx");
+                //Session.Add("Error", ex);
+                //Response.Redirect("Error.aspx");
+
+                throw ex;
             }
         }
     }
