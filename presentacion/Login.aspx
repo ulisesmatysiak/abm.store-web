@@ -12,7 +12,7 @@
             <label class="form-label">Password: </label>
             <asp:TextBox runat="server" ID="txtPass" CssClass="form-control" TextMode="Password" Required="" />
         </div>
-        <asp:Button Text="Acceder" runat="server" ID="btnLogin" CssClass="btn btn-primary" />
+        <asp:Button Text="Acceder" runat="server" ID="btnLogin" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
         <a href="/">Cancelar </a>
     </div>
 </asp:Content>
