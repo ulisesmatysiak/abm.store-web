@@ -14,13 +14,13 @@ namespace negocio
     {
 
         public Articulo buscarPorID(string id)
-        {   
-            Articulo buscar = new Articulo();   
+        {
+            Articulo buscar = new Articulo();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.id and A.IdCategoria = C.Id and A.Id = " + id);                         
+                datos.setearConsulta("select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.id and A.IdCategoria = C.Id and A.Id = " + id);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -40,7 +40,7 @@ namespace negocio
 
                     buscar = art;
                 }
-                return buscar;                
+                return buscar;
             }
             catch (Exception ex)
             {
@@ -51,6 +51,7 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
@@ -60,47 +61,7 @@ namespace negocio
             try
             {
                 string consulta = ("select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.id and A.IdCategoria = C.Id ");
-                datos.setearConsulta(consulta);               
-                datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    Articulo aux = new Articulo();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Codigo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Marca = new Marca();
-                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
-                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
-                    aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-
-                    lista.Add(aux);
-                }
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
-        public List<Articulo> listarConSP()
-        {
-            List<Articulo> lista = new List<Articulo>();
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                datos.setearProcedimiento("storedListar");
+                datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -158,31 +119,6 @@ namespace negocio
             }
         }
 
-        public void agregarConSP(Articulo nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearProcedimiento("storedAgregarArt");
-                datos.setearParametro("@codigo", nuevo.Codigo);
-                datos.setearParametro("@nombre", nuevo.Nombre);
-                datos.setearParametro("@desc", nuevo.Descripcion);
-                datos.setearParametro("@img", nuevo.ImagenUrl);
-                datos.setearParametro("@precio", nuevo.Precio);
-                datos.setearParametro("@idMarca", nuevo.Marca.Id);
-                datos.setearParametro("@idCategoria", nuevo.Categoria.Id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
         public void modificar(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -208,32 +144,6 @@ namespace negocio
                 datos.cerrarConexion();
             }
 
-        }
-
-        public void modificarConSP(Articulo articulo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearProcedimiento("storedModificarArt");
-                datos.setearParametro("@codigo", articulo.Codigo);
-                datos.setearParametro("@nombre", articulo.Nombre);
-                datos.setearParametro("@desc", articulo.Descripcion);
-                datos.setearParametro("@img", articulo.ImagenUrl);
-                datos.setearParametro("@precio", articulo.Precio);
-                datos.setearParametro("@idMarca", articulo.Marca.Id);
-                datos.setearParametro("@idCategoria", articulo.Categoria.Id);
-                datos.setearParametro("@id", articulo.Id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
         }
 
         public void eliminar(int Id)
@@ -341,7 +251,6 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-
 
     }
 }
