@@ -33,7 +33,6 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

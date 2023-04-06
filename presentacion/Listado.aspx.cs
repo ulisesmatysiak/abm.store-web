@@ -13,6 +13,12 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.esAdmin(Session["user"]))
+            {
+                Session.Add("error", "Se requiere permiso de admin para esta pantalla");
+                Response.Redirect("Error.aspx");
+            }
+
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvArticulos.DataSource = negocio.listar();
             dgvArticulos.DataBind();

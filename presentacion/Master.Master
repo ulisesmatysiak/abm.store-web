@@ -34,11 +34,22 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="d-flex">
+
+                    <%if (!negocio.Seguridad.sesionActiva(Session["user"]))
+                        {%>
                     <a href="Login.aspx" class="btn btn-success me-2">Login</a>
                     <a href="Registro.aspx" class="btn btn-outline-primary m-auto">Registrarse</a>
-                    <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" runat="server" />
+                    <%
+                        }
+                        else
+                        {
+                    %>
+                    <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" runat="server" OnClick="btnSalir_Click" />
                     <asp:Label ID="lblUser" Text="user" CssClass="text-light m-auto me-2" runat="server" />
+                    <%} %>
+                    <asp:Image ID="imgAvatar" runat="server" style="height:40px; width:40px; border-radius:50%;" />
                 </div>
             </div>
         </nav>
