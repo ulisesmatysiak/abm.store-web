@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
+using System.Configuration;
+using System.Data.SqlClient;
 
 
 
@@ -55,15 +57,13 @@ namespace negocio
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
-            ArticuloNegocio negocio = new ArticuloNegocio();
             AccesoDatos datos = new AccesoDatos();
+
+            datos.setearConsulta("select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.id and A.IdCategoria = C.Id ");
+            datos.ejecutarLectura();
 
             try
             {
-                string consulta = ("select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.id and A.IdCategoria = C.Id ");
-                datos.setearConsulta(consulta);
-                datos.ejecutarLectura();
-
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
@@ -86,6 +86,7 @@ namespace negocio
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
             finally
