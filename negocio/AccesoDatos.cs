@@ -21,11 +21,11 @@ namespace negocio
         }
         public AccesoDatos()
         {
-            //conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
-            //comando = new SqlCommand();
-
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security= true");
+            conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
             comando = new SqlCommand();
+
+            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security= true");
+            //comando = new SqlCommand();
         }
         public void setearConsulta(string consulta)
         {
